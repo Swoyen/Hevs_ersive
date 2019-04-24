@@ -1,0 +1,1 @@
+{ "buttons": [ "Horizontal", "Vertical", "Fire1", "Fire2", "Fire3", "Jump", "Submit", "Cancel" ], "axes": [ "Mouse X", "Mouse Y", "Mouse ScrollWheel", "Horizontal", "Vertical" ] }

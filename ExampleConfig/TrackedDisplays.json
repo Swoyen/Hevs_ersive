@@ -1,0 +1,66 @@
+{
+  "platforms": [
+    {
+      "id": "QuadDisplay",
+      
+      "nodes": [
+        { "id": "localhost", "display": [ "disp_farleft", "disp_left", "disp_right", "disp_farright" ], "resolution": [ 15360, 2160 ], "exclusive_fullscreen": true }
+      ],
+
+      "displays": [
+       { "id": "disp_farleft", "type": "offaxis", "ul": [-0.829, 0.0, 0 ], "ll": [-0.829, -0.942, 0 ], "lr": [ 0.829, -0.942, 0 ], "viewport": "vp_farleft", "tracker": "track_farleft" },
+        { "id": "disp_left", "type": "offaxis", "ul": [-0.829, 0.0, 0 ], "ll": [-0.829, -0.942, 0 ], "lr": [ 0.829, -0.942, 0 ], "viewport": "vp_left", "tracker": "track_left" },
+        { "id": "disp_right", "type": "offaxis", "ul": [-0.829, 0.0, 0 ], "ll": [-0.829, -0.942, 0 ], "lr": [ 0.829, -0.942, 0 ], "viewport": "vp_right", "tracker": "track_right" },
+        { "id": "disp_farright", "type": "offaxis", "ul": [-0.829, 0.0, 0 ], "ll": [-0.829, -0.942, 0 ], "lr": [ 0.829, -0.942, 0 ], "viewport": "vp_farright", "tracker": "track_farright" }
+      ],
+
+      "viewports": [
+        { "id": "vp_farleft", "x": 0, "y": 0, "width": 3840, "height": 2160 },
+        { "id": "vp_left", "x": 3840, "y": 0, "width": 3840, "height": 2160 },
+        { "id": "vp_right", "x": 7680, "y": 0, "width": 3840, "height": 2160 },
+        { "id": "vp_farright", "x": 11520, "y": 0, "width": 3840, "height": 2160 }
+      ],
+
+      "trackers": [
+        { "id": "track_farleft", "address": "Farleft@127.0.0.1", "forward": "Z", "right": "-X", "up": "Y", handedness: "right" },
+        { "id": "track_left", "address": "Left@127.0.0.1", "forward": "Z", "right": "-X", "up": "Y", handedness: "right" },
+        { "id": "track_right", "address": "Right@127.0.0.1","forward": "Z", "right": "-X", "up": "Y", handedness: "right" },
+        { "id": "track_farright", "address": "Farright@127.0.0.1", "forward": "Z", "right": "-X", "up": "Y", handedness: "right" },
+	{ "id": "Wand", "address": "Wand@127.0.0.1", "forward": "Z", "right": "-X", "up": "Y", handedness: "right" }
+      ]
+    },
+
+    {
+      "id": "QuadDisplayWindowed",
+      "inherit": "QuadDisplay",      
+      "nodes": [
+        { "id": "localhost", "exclusive_fullscreen": false }
+      ]
+    },
+
+    {
+      "id": "MasterControlled",
+      "inherit": "QuadDisplay",
+      
+      "nodes": [
+        { "id": "localhost", "display": [ "disp_farleft", "disp_left", "disp_right", "disp_farright", "disp_master" ], "resolution": [ 17280, 2160 ] }
+      ],
+
+      "displays": [
+        { "id": "disp_master", "layers": ["MasterOnly"], "transform": { "translate": [ 0, 0, 0 ], "rotate": [ 0, 0, 0 ] }, "viewport": "vp_master" },
+        { "id": "disp_farleft", "cull_layers": ["MasterOnly"] },
+        { "id": "disp_left", "cull_layers": ["MasterOnly"] },
+        { "id": "disp_right", "cull_layers": ["MasterOnly"] },
+        { "id": "disp_farright", "cull_layers": ["MasterOnly"] }
+      ],
+
+      "viewports": [
+        { "id": "vp_master", "x": 15360, "y": 0, "width": 1920, "height": 1080 }
+      ],
+
+      "trackers": [
+
+      ]
+    }
+  ]
+}

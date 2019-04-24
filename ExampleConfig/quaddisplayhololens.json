@@ -1,0 +1,40 @@
+{
+  "platforms": [
+    {
+      "id": "QuadDisplayWithHololens",
+
+     "cluster": { "master": "inm275559", "data_port": 4448, "sync_port": 4449, "packet_limit": 1048576,
+                "auto_sync_rigid": true, "auto_sync_nonstatic": false, "disable_client_physics": true,
+                "framelock": "software" },
+    
+      
+      "nodes": [
+        { "id": "hololens-5u2gu", "address": "10.160.36.111", "display": "disp_hololens"},
+        { "id": "inm275559",  "address": "10.160.98.129", "display": [ "disp_farleft", "disp_left", "disp_right", "disp_farright" ], "resolution": [ 15360, 2160 ], "exclusive_fullscreen": true }
+      ],
+
+     "displays": [
+        { "id": "disp_farleft", "type": "offaxis", "ul": [-0.829, 0.0, 0 ], "ll": [-0.829, -0.942, 0 ], "lr": [ 0.829, -0.942, 0 ], "viewport": "vp_farleft", "tracker": "track_farleft" },
+        { "id": "disp_left", "type": "offaxis", "ul": [-0.829, 0.0, 0 ], "ll": [-0.829, -0.942, 0 ], "lr": [ 0.829, -0.942, 0 ], "viewport": "vp_left", "tracker": "track_left" },
+        { "id": "disp_right", "type": "offaxis", "ul": [-0.829, 0.0, 0 ], "ll": [-0.829, -0.942, 0 ], "lr": [ 0.829, -0.942, 0 ], "viewport": "vp_right", "tracker": "track_right" },
+        { "id": "disp_farright", "type": "offaxis", "ul": [-0.829, 0.0, 0 ], "ll": [-0.829, -0.942, 0 ], "lr": [ 0.829, -0.942, 0 ], "viewport": "vp_farright", "tracker": "track_farright" },
+        { "id": "disp_hololens", "type": "hololens"}
+      ],
+
+      "viewports": [
+        { "id": "vp_farleft", "x": 0, "y": 0, "width": 3840, "height": 2160 },
+        { "id": "vp_left", "x": 3840, "y": 0, "width": 3840, "height": 2160 },
+        { "id": "vp_right", "x": 7680, "y": 0, "width": 3840, "height": 2160 },
+        { "id": "vp_farright", "x": 11520, "y": 0, "width": 3840, "height": 2160 }
+      ],
+
+      "trackers": [
+        { "id": "track_farleft", "address": "Farleft@10.160.98.129", "forward": "Z", "right": "-X", "up": "Y", handedness: "right" },
+        { "id": "track_left", "address": "Left@10.160.98.129", "forward": "Z", "right": "-X", "up": "Y", handedness: "right" },
+        { "id": "track_right", "address": "Right@10.160.98.129","forward": "Z", "right": "-X", "up": "Y", handedness: "right" },
+        { "id": "track_farright", "address": "Farright@10.160.98.129", "forward": "Z", "right": "-X", "up": "Y", handedness: "right" },
+	    { "id": "Wand", "address": "Wand@110.160.98.129", "forward": "Z", "right": "-X", "up": "Y", handedness: "right" }
+      ]
+    }
+  ]
+}

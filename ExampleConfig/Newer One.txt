@@ -1,0 +1,65 @@
+{
+  "platforms": [
+    {
+      "id": "QuadDisplay",
+      
+      "nodes": [
+        { "id": "localhost", "display": [ "disp_farleft", "disp_left", "disp_right", "disp_farright" ], "resolution": [ 15360, 2160 ], "exclusive_fullscreen": true }
+      ],
+
+      "displays": [
+        { "id": "disp_farleft", "type": "offaxis", "ul": [2.064, 1.8, -0.229 ], "ll": [2.064, 0.8, -0.229 ], "lr": [ 1.331, 0.8, -1.729 ], "viewport": "vp_farleft" },
+        { "id": "disp_left", "type": "offaxis", "ul": [1.315, 1.82, -1.748 ], "ll": [1.315, 0.79, -1.748 ], "lr": [ -0.240, 0.82, -2.285 ], "viewport": "vp_left" },
+        { "id": "disp_right", "type": "offaxis", "ul": [-0.265, 1.84, -2.273 ], "ll": [-0.265, 0.78, -2.273 ], "lr": [ -1.891, 0.84, -1.581 ], "viewport": "vp_right" },
+        { "id": "disp_farright", "type": "offaxis", "ul": [-1.908, 1.86, -1.558 ], "ll": [-1.908, 0.77, -1.558 ], "lr": [ -1.958, 0.86, 0.174 ], "viewport": "vp_farright" }
+      ],
+
+      "viewports": [
+        { "id": "vp_farleft", "x": 0, "y": 0, "width": 3840, "height": 2160 },
+        { "id": "vp_left", "x": 3840, "y": 0, "width": 3840, "height": 2160 },
+        { "id": "vp_right", "x": 7680, "y": 0, "width": 3840, "height": 2160 },
+        { "id": "vp_farright", "x": 11520, "y": 0, "width": 3840, "height": 2160 }
+      ],
+
+      "trackers": [
+        { "id": "track_farleft", "address": "Farleft@127.0.0.1", "forward": "Z", "right": "X", "up": "Y" },
+        { "id": "track_left", "address": "Left@127.0.0.1", "forward": "Z", "right": "X", "up": "Y" },
+        { "id": "track_right", "address": "Right@127.0.0.1", "forward": "Z", "right": "X", "up": "Y" },
+        { "id": "track_farright", "address": "Farright@127.0.0.1", "forward": "Z", "right": "X", "up": "Y" },
+      ]
+    },
+
+    {
+      "id": "QuadDisplayWindowed",
+      "inherit": "QuadDisplay",      
+      "nodes": [
+        { "id": "localhost", "exclusive_fullscreen": false }
+      ]
+    },
+
+    {
+      "id": "MasterControlled",
+      "inherit": "QuadDisplay",
+      
+      "nodes": [
+        { "id": "localhost", "display": [ "disp_farleft", "disp_left", "disp_right", "disp_farright", "disp_master" ], "resolution": [ 17280, 2160 ] }
+      ],
+
+      "displays": [
+        { "id": "disp_master", "layers": ["MasterOnly"], "transform": { "translate": [ 0, 0, 0 ], "rotate": [ 0, 0, 0 ] }, "viewport": "vp_master" },
+        { "id": "disp_farleft", "cull_layers": ["MasterOnly"] },
+        { "id": "disp_left", "cull_layers": ["MasterOnly"] },
+        { "id": "disp_right", "cull_layers": ["MasterOnly"] },
+        { "id": "disp_farright", "cull_layers": ["MasterOnly"] }
+      ],
+
+      "viewports": [
+        { "id": "vp_master", "x": 15360, "y": 0, "width": 1920, "height": 1080 }
+      ],
+
+      "trackers": [
+
+      ]
+    }
+  ]
+}
